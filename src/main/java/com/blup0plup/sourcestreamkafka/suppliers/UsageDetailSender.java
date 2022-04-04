@@ -23,11 +23,11 @@ public class UsageDetailSender {
   @Bean
   public Supplier<UsageDetail> sendEvents() {
     return () -> {
-      UsageDetail usageDetail = new UsageDetail();
+      var usageDetail = new UsageDetail();
       usageDetail.setSugarId(UUID.randomUUID().toString());
       usageDetail.setDuration(random.nextInt(300));
       usageDetail.setData(random.nextInt(700));
-      String jsonDetails = gson.toJson(usageDetail);
+      var jsonDetails = gson.toJson(usageDetail);
       logger.info("Generated Detail: {}",jsonDetails);
       return usageDetail;
     };
